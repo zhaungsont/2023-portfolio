@@ -2,7 +2,8 @@ $left-content-width-percentage: 60vw;
 $landing-page-content-top: 30vh;
 $grey-text: rgb(98, 98, 98);
 $title-font-size: 6rem;
-
+$background-light: #d9d9d9;
+$background-dark: #1f1f1f;
 * {
 	box-sizing: border-box;
 	padding: 0;
@@ -10,12 +11,14 @@ $title-font-size: 6rem;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-body::-webkit-scrollbar {
+body::-webkit-scrollbar,
+#main-right-section::-webkit-scrollbar {
 	display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-body {
+body,
+#main-right-section {
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
 }
@@ -24,7 +27,7 @@ body {
 	position: relative;
 
 	#background-graphics {
-		background: #d9d9d9;
+		background: $background-light;
 		position: fixed;
 		width: 100vw;
 		height: 100vh;
@@ -56,8 +59,32 @@ body {
 		width: $left-content-width-percentage;
 		height: 100vh;
 		position: fixed;
+		transition: opacity 1s;
 
-		#landing-zone {
+		& > div {
+			position: absolute;
+			top: 0;
+		}
+
+		.displaying-true {
+			// opacity: 1;
+			animation: fade_in ease 300ms forwards;
+		}
+
+		.displaying-false {
+			// opacity: 0;
+			animation: fade_out ease 300ms forwards;
+		}
+
+		.displaying-none {
+			animation: fade_out ease 0ms forwards;
+		}
+
+		.default-closed {
+			opacity: 0;
+		}
+
+		#home-left-panel {
 			margin: 0 0 0 10rem;
 			position: absolute;
 			top: $landing-page-content-top;
@@ -67,6 +94,8 @@ body {
 
 			#title {
 				font-size: $title-font-size;
+				min-height: $title-font-size;
+				line-height: $title-font-size;
 			}
 
 			#sub-title {
@@ -76,7 +105,7 @@ body {
 			}
 
 			#link-icons {
-				font-size: 2rem;
+				font-size: 1.5rem;
 				margin-top: 0.5rem;
 
 				svg {
@@ -90,15 +119,31 @@ body {
 				}
 			}
 		}
+
+		#work-left-panel {
+			margin-top: 30vh;
+		}
+
+		#life-left-panel {
+			margin-top: 30vh;
+		}
 	}
 
 	#main-right-section {
-		// background: rgba(0, 128, 0, 0.192);
 		width: calc(100vw - $left-content-width-percentage);
+		// position: absolute;
 		position: relative;
 		margin-left: $left-content-width-percentage;
 		right: 0;
+		z-index: 2;
 		overflow-x: hidden;
+		// height: 100vh; // 加了才能 scroll snap，但加了就不能從左半邊 scroll @@
+		// scroll-snap-type: y proximity;
+
+		// & > div {
+		// 	scroll-snap-align: start;
+		// 	position: relative;
+		// }
 
 		#landing-page-nav {
 			height: 100vh;
@@ -112,9 +157,10 @@ body {
 				// transform: translateY(-50%);
 
 				.nav-button {
+					$button-height: 4rem;
 					// padding: 1rem;
 					width: 20rem;
-					height: 3.5rem;
+					height: $button-height;
 					margin-bottom: 3rem;
 					border-radius: 0.5rem;
 					font-size: 1.25rem;
@@ -125,6 +171,7 @@ body {
 
 					&:hover {
 						border: 0.5px solid whitesmoke;
+						transform: translate(-0.5px, -0.5px);
 					}
 
 					&::before {
@@ -153,8 +200,8 @@ body {
 					.nav-button-text {
 						position: absolute;
 						width: 20rem;
-						height: 3.5rem;
-						line-height: 3.5rem;
+						height: $button-height;
+						line-height: $button-height;
 						padding-left: 1rem;
 						z-index: 3;
 
@@ -165,6 +212,10 @@ body {
 					}
 				}
 			}
+		}
+
+		.spacer {
+			height: 33vh;
 		}
 	}
 }
@@ -182,6 +233,28 @@ body {
 	}
 
 	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes fade_in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fade_out {
+	0% {
+		opacity: 1;
+	}
+	99% {
+		opacity: 0;
+	}
+	100% {
+		display: none;
 		opacity: 0;
 	}
 }
