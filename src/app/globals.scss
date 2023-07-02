@@ -10,6 +10,10 @@ $background-dark: #1f1f1f;
 	margin: 0;
 }
 
+html {
+	scroll-behavior: smooth !important;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar,
 #main-right-section::-webkit-scrollbar {
@@ -144,6 +148,47 @@ body,
 
 		#work-left-panel {
 			margin-top: 30vh;
+			margin-left: 10rem;
+			margin-right: 3rem;
+			// font-size: 1.25rem;
+
+			.work-static-part {
+				margin-bottom: 5rem;
+				.work-static-title {
+					margin-bottom: 1rem;
+					font-size: 1.25rem;
+				}
+				.work-static-content {
+					margin-bottom: 1rem;
+				}
+
+				.work-static-content-links {
+					display: flex;
+					gap: 1rem;
+				}
+			}
+
+			.work-dynamic-part {
+				text-align: end;
+
+				.work-dynamic-title {
+					font-size: 1.375rem;
+					font-weight: 700;
+					line-height: 2rem;
+				}
+
+				.work-dynamic-metadata {
+					color: grey;
+					margin-bottom: 1rem;
+				}
+
+				.work-dynamic-content {
+					margin-bottom: 1rem;
+				}
+
+				.work-dynamic-read-more {
+				}
+			}
 		}
 
 		#life-left-panel {
@@ -240,6 +285,56 @@ body,
 
 		.spacer {
 			height: 33vh;
+		}
+
+		#work-right-section {
+			position: relative;
+			// height: 500px;
+
+			.project {
+				padding-top: 3rem;
+				.card {
+					position: relative;
+					margin: auto;
+					width: 21rem;
+					height: 28rem;
+					margin-bottom: 2rem;
+
+					&:nth-of-type(1) {
+						transform: translate(-50px, 0);
+					}
+					&:nth-of-type(2) {
+						transform: translate(50px, 0);
+					}
+
+					&::before {
+						content: '';
+						left: 0;
+						top: 0;
+						width: 100%;
+						height: 100%;
+						position: absolute;
+						border-radius: 0.5rem;
+						background: linear-gradient(20deg, rgb(142, 142, 142), transparent),
+							url(https://grainy-gradients.vercel.app/noise.svg);
+						filter: contrast(500%) brightness(100%) opacity(100%);
+					}
+
+					img {
+						object-fit: cover;
+						transition: filter 300ms;
+						border-radius: 0.5rem;
+						filter: opacity(20%) blur(2px);
+						&:hover {
+							filter: none;
+						}
+					}
+				}
+			}
+		}
+
+		#life-right-ection {
+			position: relative;
 		}
 	}
 }

@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import BackgroundGraphics from '@/app/components/BackgroundGraphics';
 import HomeLeftPanel from '@/app/components/HomeLeftPanel';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { Roboto_Mono } from 'next/font/google';
 const robotoMono = Roboto_Mono({ subsets: ['latin'] });
@@ -99,6 +100,7 @@ export default function Home() {
 			window.removeEventListener('scroll', handleSectionScroll);
 		};
 	}, []);
+
 	return (
 		<main id="landing-page">
 			<BackgroundGraphics />
@@ -125,7 +127,37 @@ export default function Home() {
 							: false
 					}`}
 				>
-					Work Work Work Work Work Work Work Work Work Work Work Work
+					<div className="work-static-part">
+						<div className="work-static-title">
+							<strong>Michael Chuang</strong> is a web developer based in
+							Taipei, Taiwan.
+						</div>
+						<div className="work-static-content">
+							Having built dashboard systems for clients including Taiwan’s
+							top-10 energy firm and top-2 automobile manufacturer, he is
+							skilled in developing flexible, versatile, and fully interactive
+							web systems.
+						</div>
+						<div className="work-static-content-links">
+							<Link href="">GitHub</Link>
+							{'|'}
+							<Link href="">LinkedIn</Link>
+							{'|'}
+							<Link href="">Blog</Link>
+						</div>
+					</div>
+					<div className="work-dynamic-part">
+						<div className="work-dynamic-title">
+							Situation Room Dashboard System
+						</div>
+						<div className="work-dynamic-metadata">Internal | 2022</div>
+						<div className="work-dynamic-content">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+							fringilla rutrum massa id tempor.Pellentesque laoreet lorem
+							volutpat dictum ultricies. Aenean nec volutpat erat.
+						</div>
+						<div className="work-dynamic-read-more">Read More_</div>
+					</div>
 				</div>
 				<div
 					id="life-left-panel"
@@ -143,10 +175,13 @@ export default function Home() {
 			<div id="main-right-section" ref={rightPanelRef}>
 				<div id="landing-page-nav" ref={rightPanelLandingRef}>
 					<div id="nav-buttons-group" className={robotoMono.className}>
-						<Link href="#work-section">
+						<Link href="#work-right-section">
 							<div
 								className="nav-button"
 								onMouseMove={(e: any) => navButtonHoverHandler(e)}
+								// onClick={() => {
+								// 	rightPanelWorkRef?.current?.scrollIntoView();
+								// }}
 							>
 								<div className="nav-button-text">Work</div>
 							</div>
@@ -165,71 +200,41 @@ export default function Home() {
 						</div>
 					</div>
 				</div>
-				<div id="work-right" ref={rightPanelWorkRef}>
-					<h2>Work</h2>
-					following content <br />
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quis
-					recusandae aspernatur molestias magni non, architecto inventore
-					aliquam? Quia est suscipit harum amet voluptates distinctio mollitia
-					accusamus quas expedita asperiores!Lorem ipsum dolor sit amet <br />
-					consectetur adipisicing elit. Delectus quis recusandae aspernatur
-					molestias magni non, architecto inventore aliquam? Quia est suscipit
-					harum amet voluptates distinctio mollitia accusamus quas expedita
-					asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Delectus quis recusandae aspernatur molestias magni non, architecto
-					inventore aliquam? Quia est suscipit harum amet voluptates distinctio
-					mollitia accusamus quas expedita asperiores!Lorem ipsum dolor sit amet{' '}
-					<br />
-					consectetur adipisicing elit. Delectus quis recusandae aspernatur
-					molestias magni non, architecto inventore aliquam? Quia est suscipit
-					harum amet voluptates distinctio mollitia accusamus quas expedita
-					asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Delectus quis recusandae aspernatur molestias magni non, architecto
-					inventore aliquam? Quia est suscipit harum amet voluptates distinctio
-					mollitia accusamus quas expedita asperiores!Lorem ipsum dolor sit amet{' '}
-					<br />
-					consectetur adipisicing elit. Delectus quis recusandae aspernatur
-					molestias magni non, architecto inventore aliquam? Quia est suscipit
-					harum amet voluptates distinctio mollitia accusamus quas expedita
-					asperiores! consectetur adipisicing elit. Delectus quis recusandae
-					aspernatur molestias magni non, architecto inventore aliquam? Quia est
-					suscipit harum amet voluptates distinctio mollitia accusamus quas
-					expedita asperiores!Lorem ipsum dolor sit amet consectetur adipisicing
-					elit. Delectus quis recusandae aspernatur molestias magni non,
-					architecto inventore aliquam? Quia est suscipit harum amet voluptates
-					distinctio mollitia accusamus quas expedita asperiores!Lorem ipsum
-					dolor sit amet <br />
-					consectetur adipisicing elit. Delectus quis recusandae aspernatur
-					molestias magni non, architecto inventore aliquam? Quia est suscipit
-					harum amet voluptates distinctio mollitia accusamus quas expedita
-					asperiores!
-					<br />
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quis
-					recusandae aspernatur molestias magni non, architecto inventore
-					aliquam? Quia est suscipit harum amet voluptates distinctio mollitia
-					accusamus quas expedita asperiores!Lorem ipsum dolor sit amet <br />
-					consectetur adipisicing elit. Delectus quis recusandae aspernatur
-					molestias magni non, architecto inventore aliquam? Quia est suscipit
-					harum amet voluptates distinctio mollitia accusamus quas expedita
-					asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Delectus quis recusandae aspernatur molestias magni non, architecto
-					inventore aliquam? Quia est suscipit harum amet voluptates distinctio
-					mollitia accusamus quas expedita asperiores!Lorem ipsum dolor sit amet{' '}
-					<br />
-					consectetur adipisicing elit. Delectus quis recusandae aspernatur
-					molestias magni non, architecto inventore aliquam? Quia est suscipit
-					harum amet voluptates distinctio mollitia accusamus quas expedita
-					asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Delectus quis recusandae aspernatur molestias magni non, architecto
-					inventore aliquam? Quia est suscipit harum amet voluptates distinctio
-					mollitia accusamus quas expedita asperiores!Lorem ipsum dolor sit amet{' '}
-					<br />
-					consectetur adipisicing elit. Delectus quis recusandae aspernatur
-					molestias magni non, architecto inventore aliquam? Quia est suscipit
-					harum amet voluptates distinctio mollitia accusamus quas expedita
-					asperiores!
+				<div id="work-right-section" ref={rightPanelWorkRef}>
+					<div className="project">
+						<div className="card">
+							<Image
+								src="https://images.unsplash.com/photo-1683130461728-cf2ab05765c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80"
+								alt=""
+								fill
+							/>
+						</div>
+						<div className="card">
+							<Image
+								src="https://images.unsplash.com/photo-1688242688672-c7e1a8fd1e49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
+								alt=""
+								fill
+							/>
+						</div>
+					</div>
+					<div className="project">
+						<div className="card">
+							<Image
+								src="https://images.unsplash.com/photo-1683130461728-cf2ab05765c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80"
+								alt=""
+								fill
+							/>
+						</div>
+						<div className="card">
+							<Image
+								src="https://images.unsplash.com/photo-1688242688672-c7e1a8fd1e49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
+								alt=""
+								fill
+							/>
+						</div>
+					</div>
 				</div>
-				<div id="life-section" ref={rightPanelLifeRef}>
+				<div id="life-right-section" ref={rightPanelLifeRef}>
 					<h2>Life</h2>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quis
 					recusandae aspernatur molestias magni non, architecto inventore

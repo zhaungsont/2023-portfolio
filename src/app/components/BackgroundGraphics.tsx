@@ -11,10 +11,14 @@ import {
 const generateSpringAnimationConfig = () => {
 	const maxX = window.innerWidth - 250;
 	const maxY = window.innerHeight - 250;
-	const iterations = 99;
+	const iterations = 25;
 
 	const randXArray = Array.from({ length: iterations }, (v, i) => 0);
 	const randYArray = Array.from({ length: iterations }, (v, i) => 0);
+	const randScaleArray = Array.from(
+		{ length: iterations },
+		(v, i) => Math.random() + 1
+	);
 
 	for (let i = 1; i < iterations; i++) {
 		const deltaX = (Math.random() > 0.5 ? 300 : -200) * Math.random();
@@ -37,10 +41,11 @@ const generateSpringAnimationConfig = () => {
 		}
 	}
 
-	const fromArray = { y: 0, x: 0 };
+	const fromArray = { y: 0, x: 0, scale: 2 };
 	const toArray = randXArray.map((xValue, idx) => ({
 		x: xValue,
 		y: randYArray[idx],
+		scale: randScaleArray[idx],
 	}));
 
 	return {
@@ -178,10 +183,10 @@ const BackgroundGraphics = () => {
 					/>
 				</animated.div>
 			</div>
-			<div className="experimental-graphics">
+			{/* <div className="experimental-graphics">
 				<div className="blue"></div>
 				<div className="red"></div>
-			</div>
+			</div> */}
 			<Image
 				src="/images/background-noise.png"
 				alt=""
