@@ -27,14 +27,16 @@ const HomeLeftPanel = () => {
 					}}
 				/>
 			</h1>
-			<h3 id="sub-title">Michael Chuang, Web Developer</h3>
-			<div id="link-icons">
-				<Link href="https://github.com/zhaungsont">
-					<FaGithub />
-				</Link>
-				<Link href="https://www.linkedin.com/in/zhsont/">
-					<FaLinkedin />
-				</Link>
+			<div className="sub-content">
+				<h3 id="sub-title">Michael Chuang, Web Developer</h3>
+				<div id="link-icons">
+					<Link href="https://github.com/zhaungsont">
+						<FaGithub />
+					</Link>
+					<Link href="https://www.linkedin.com/in/zhsont/">
+						<FaLinkedin />
+					</Link>
+				</div>
 			</div>
 		</div>
 	);

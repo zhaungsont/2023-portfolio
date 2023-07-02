@@ -67,34 +67,9 @@ const BackgroundGraphics = () => {
 	const blurYellowRef = useRef<any>(null);
 	const blurBlueRef = useRef<any>(null);
 
-	useEffect(() => {
-		const handleMouseMove = (e: MouseEvent) => {
-			// const x = e.clientX - blurMagentaRef?.current?.offsetWidth / 2;
-			// const scale = Math.max(
-			// 	((window.innerWidth - (window.innerWidth - x)) / window.innerWidth) * 3,
-			// 	1.25
-			// );
-			// const y = e.clientY - blurMagentaRef?.current?.offsetHeight / 2;
-			// const keyframes = {
-			// 	transform: `translate(${x}px, ${y}px) scale(${scale})`,
-			// };
-			// blurMagentaRef?.current?.animate(keyframes, {
-			// 	fill: 'forwards',
-			// 	duration: 3000,
-			// });
-		};
-
-		window.addEventListener('mousemove', handleMouseMove);
-
-		return () => {
-			window.removeEventListener('mousemove', handleMouseMove);
-		};
-	}, []);
-
-	const [magentaAnimationProps] = useSpring(() => {
-		console.log('useSpring called');
-		return generateSpringAnimationConfig();
-	}, [resizeTimes]);
+	// const [magentaAnimationProps] = useSpring(() => {
+	// 	return generateSpringAnimationConfig();
+	// }, [resizeTimes]);
 	const [yellowAnimationProps] = useSpring(() => {
 		return generateSpringAnimationConfig();
 	}, [resizeTimes]);
@@ -124,7 +99,6 @@ const BackgroundGraphics = () => {
 	useEffect(() => {
 		const mousemoveHandler = (e: MouseEvent) => {
 			const { clientX, clientY } = e;
-			console.log(clientX, clientY);
 			api.start({ xy: [clientX - 250, clientY - 250] });
 		};
 		window.addEventListener('mousemove', mousemoveHandler);
@@ -203,6 +177,10 @@ const BackgroundGraphics = () => {
 						ref={blurRedRef}
 					/>
 				</animated.div>
+			</div>
+			<div className="experimental-graphics">
+				<div className="blue"></div>
+				<div className="red"></div>
 			</div>
 			<Image
 				src="/images/background-noise.png"

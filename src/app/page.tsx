@@ -4,7 +4,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import BackgroundGraphics from '@/app/components/BackgroundGraphics';
 import HomeLeftPanel from '@/app/components/HomeLeftPanel';
 import Link from 'next/link';
-import { InView } from 'react-intersection-observer';
 
 import { Roboto_Mono } from 'next/font/google';
 const robotoMono = Roboto_Mono({ subsets: ['latin'] });
@@ -21,12 +20,6 @@ enum DisplayMode {
 	HIDDEN,
 	SHOWN,
 }
-
-const inViewOptions = {
-	as: 'div',
-	delay: 100,
-	threshold: 0.3,
-} as any;
 
 export default function Home() {
 	const rightPanelRef = useRef(null) as any;
@@ -148,169 +141,146 @@ export default function Home() {
 				</div>
 			</div>
 			<div id="main-right-section" ref={rightPanelRef}>
-				<InView
-					{...inViewOptions}
-					// onChange={(inView: boolean, entry: IntersectionObserverEntry) =>
-					// 	rightPanelViewChangeHandler(0, inView, entry)
-					// }
-				>
-					<div id="landing-page-nav" ref={rightPanelLandingRef}>
-						<div id="nav-buttons-group" className={robotoMono.className}>
-							<Link href="#work-section">
-								<div
-									className="nav-button"
-									onMouseMove={(e: any) => navButtonHoverHandler(e)}
-								>
-									<div className="nav-button-text">Work</div>
-								</div>
-							</Link>
+				<div id="landing-page-nav" ref={rightPanelLandingRef}>
+					<div id="nav-buttons-group" className={robotoMono.className}>
+						<Link href="#work-section">
 							<div
 								className="nav-button"
 								onMouseMove={(e: any) => navButtonHoverHandler(e)}
 							>
-								<div className="nav-button-text">Life</div>
+								<div className="nav-button-text">Work</div>
 							</div>
-							<div
-								className="nav-button"
-								onMouseMove={(e: any) => navButtonHoverHandler(e)}
-							>
-								<div className="nav-button-text">Contact</div>
-							</div>
+						</Link>
+						<div
+							className="nav-button"
+							onMouseMove={(e: any) => navButtonHoverHandler(e)}
+						>
+							<div className="nav-button-text">Life</div>
+						</div>
+						<div
+							className="nav-button"
+							onMouseMove={(e: any) => navButtonHoverHandler(e)}
+						>
+							<div className="nav-button-text">Contact</div>
 						</div>
 					</div>
-				</InView>
-				{/* <div className="spacer"></div> */}
-				<InView
-					{...inViewOptions}
-					// onChange={(inView: boolean, entry: IntersectionObserverEntry) =>
-					// 	rightPanelViewChangeHandler(1, inView, entry)
-					// }
-				>
-					<div id="work-right" ref={rightPanelWorkRef}>
-						<h2>Work</h2>
-						following content <br />
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-						quis recusandae aspernatur molestias magni non, architecto inventore
-						aliquam? Quia est suscipit harum amet voluptates distinctio mollitia
-						accusamus quas expedita asperiores!Lorem ipsum dolor sit amet <br />
-						consectetur adipisicing elit. Delectus quis recusandae aspernatur
-						molestias magni non, architecto inventore aliquam? Quia est suscipit
-						harum amet voluptates distinctio mollitia accusamus quas expedita
-						asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Delectus quis recusandae aspernatur molestias magni non, architecto
-						inventore aliquam? Quia est suscipit harum amet voluptates
-						distinctio mollitia accusamus quas expedita asperiores!Lorem ipsum
-						dolor sit amet <br />
-						consectetur adipisicing elit. Delectus quis recusandae aspernatur
-						molestias magni non, architecto inventore aliquam? Quia est suscipit
-						harum amet voluptates distinctio mollitia accusamus quas expedita
-						asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Delectus quis recusandae aspernatur molestias magni non, architecto
-						inventore aliquam? Quia est suscipit harum amet voluptates
-						distinctio mollitia accusamus quas expedita asperiores!Lorem ipsum
-						dolor sit amet <br />
-						consectetur adipisicing elit. Delectus quis recusandae aspernatur
-						molestias magni non, architecto inventore aliquam? Quia est suscipit
-						harum amet voluptates distinctio mollitia accusamus quas expedita
-						asperiores! consectetur adipisicing elit. Delectus quis recusandae
-						aspernatur molestias magni non, architecto inventore aliquam? Quia
-						est suscipit harum amet voluptates distinctio mollitia accusamus
-						quas expedita asperiores!Lorem ipsum dolor sit amet consectetur
-						adipisicing elit. Delectus quis recusandae aspernatur molestias
-						magni non, architecto inventore aliquam? Quia est suscipit harum
-						amet voluptates distinctio mollitia accusamus quas expedita
-						asperiores!Lorem ipsum dolor sit amet <br />
-						consectetur adipisicing elit. Delectus quis recusandae aspernatur
-						molestias magni non, architecto inventore aliquam? Quia est suscipit
-						harum amet voluptates distinctio mollitia accusamus quas expedita
-						asperiores!
-						<br />
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-						quis recusandae aspernatur molestias magni non, architecto inventore
-						aliquam? Quia est suscipit harum amet voluptates distinctio mollitia
-						accusamus quas expedita asperiores!Lorem ipsum dolor sit amet <br />
-						consectetur adipisicing elit. Delectus quis recusandae aspernatur
-						molestias magni non, architecto inventore aliquam? Quia est suscipit
-						harum amet voluptates distinctio mollitia accusamus quas expedita
-						asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Delectus quis recusandae aspernatur molestias magni non, architecto
-						inventore aliquam? Quia est suscipit harum amet voluptates
-						distinctio mollitia accusamus quas expedita asperiores!Lorem ipsum
-						dolor sit amet <br />
-						consectetur adipisicing elit. Delectus quis recusandae aspernatur
-						molestias magni non, architecto inventore aliquam? Quia est suscipit
-						harum amet voluptates distinctio mollitia accusamus quas expedita
-						asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Delectus quis recusandae aspernatur molestias magni non, architecto
-						inventore aliquam? Quia est suscipit harum amet voluptates
-						distinctio mollitia accusamus quas expedita asperiores!Lorem ipsum
-						dolor sit amet <br />
-						consectetur adipisicing elit. Delectus quis recusandae aspernatur
-						molestias magni non, architecto inventore aliquam? Quia est suscipit
-						harum amet voluptates distinctio mollitia accusamus quas expedita
-						asperiores!
-					</div>
-				</InView>
-				{/* <div className="spacer"></div> */}
-				<InView
-					{...inViewOptions}
-					// onChange={(inView: boolean, entry: IntersectionObserverEntry) =>
-					// 	rightPanelViewChangeHandler(2, inView, entry)
-					// }
-				>
-					<div id="life-section" ref={rightPanelLifeRef}>
-						<h2>Life</h2>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-						quis recusandae aspernatur molestias magni non, architecto inventore
-						aliquam? Quia est suscipit harum amet voluptates distinctio mollitia
-						accusamus quas expedita asperiores!Lorem ipsum dolor sit amet <br />
-						consectetur adipisicing elit. Delectus quis recusandae aspernatur
-						molestias magni non, architecto inventore aliquam? Quia est suscipit
-						harum amet voluptates distinctio mollitia accusamus quas expedita
-						asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Delectus quis recusandae aspernatur molestias magni non, architecto
-						inventore aliquam? Quia est suscipit harum amet voluptates
-						distinctio mollitia accusamus quas expedita asperiores!Lorem ipsum
-						dolor sit amet <br />
-						consectetur adipisicing elit. Delectus quis recusandae aspernatur
-						molestias magni non, architecto inventore aliquam? Quia est suscipit
-						harum amet voluptates distinctio mollitia accusamus quas expedita
-						asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Delectus quis recusandae aspernatur molestias magni non, architecto
-						inventore aliquam? Quia est suscipit harum amet voluptates
-						distinctio mollitia accusamus quas expedita asperiores!Lorem ipsum
-						dolor sit amet <br />
-						consectetur adipisicing elit. Delectus quis recusandae aspernatur
-						molestias magni non, architecto inventore aliquam? Quia est suscipit
-						harum amet voluptates distinctio mollitia accusamus quas expedita
-						asperiores!
-						<br />
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-						quis recusandae aspernatur molestias magni non, architecto inventore
-						aliquam? Quia est suscipit harum amet voluptates distinctio mollitia
-						accusamus quas expedita asperiores!Lorem ipsum dolor sit amet <br />
-						consectetur adipisicing elit. Delectus quis recusandae aspernatur
-						molestias magni non, architecto inventore aliquam? Quia est suscipit
-						harum amet voluptates distinctio mollitia accusamus quas expedita
-						asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Delectus quis recusandae aspernatur molestias magni non, architecto
-						inventore aliquam? Quia est suscipit harum amet voluptates
-						distinctio mollitia accusamus quas expedita asperiores!Lorem ipsum
-						dolor sit amet <br />
-						consectetur adipisicing elit. Delectus quis recusandae aspernatur
-						molestias magni non, architecto inventore aliquam? Quia est suscipit
-						harum amet voluptates distinctio mollitia accusamus quas expedita
-						asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Delectus quis recusandae aspernatur molestias magni non, architecto
-						inventore aliquam? Quia est suscipit harum amet voluptates
-						distinctio mollitia accusamus quas expedita asperiores!Lorem ipsum
-						dolor sit amet <br />
-						consectetur adipisicing elit. Delectus quis recusandae aspernatur
-						molestias magni non, architecto inventore aliquam? Quia est suscipit
-						harum amet voluptates distinctio mollitia accusamus quas expedita
-						asperiores!
-					</div>
-				</InView>
+				</div>
+				<div id="work-right" ref={rightPanelWorkRef}>
+					<h2>Work</h2>
+					following content <br />
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quis
+					recusandae aspernatur molestias magni non, architecto inventore
+					aliquam? Quia est suscipit harum amet voluptates distinctio mollitia
+					accusamus quas expedita asperiores!Lorem ipsum dolor sit amet <br />
+					consectetur adipisicing elit. Delectus quis recusandae aspernatur
+					molestias magni non, architecto inventore aliquam? Quia est suscipit
+					harum amet voluptates distinctio mollitia accusamus quas expedita
+					asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Delectus quis recusandae aspernatur molestias magni non, architecto
+					inventore aliquam? Quia est suscipit harum amet voluptates distinctio
+					mollitia accusamus quas expedita asperiores!Lorem ipsum dolor sit amet{' '}
+					<br />
+					consectetur adipisicing elit. Delectus quis recusandae aspernatur
+					molestias magni non, architecto inventore aliquam? Quia est suscipit
+					harum amet voluptates distinctio mollitia accusamus quas expedita
+					asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Delectus quis recusandae aspernatur molestias magni non, architecto
+					inventore aliquam? Quia est suscipit harum amet voluptates distinctio
+					mollitia accusamus quas expedita asperiores!Lorem ipsum dolor sit amet{' '}
+					<br />
+					consectetur adipisicing elit. Delectus quis recusandae aspernatur
+					molestias magni non, architecto inventore aliquam? Quia est suscipit
+					harum amet voluptates distinctio mollitia accusamus quas expedita
+					asperiores! consectetur adipisicing elit. Delectus quis recusandae
+					aspernatur molestias magni non, architecto inventore aliquam? Quia est
+					suscipit harum amet voluptates distinctio mollitia accusamus quas
+					expedita asperiores!Lorem ipsum dolor sit amet consectetur adipisicing
+					elit. Delectus quis recusandae aspernatur molestias magni non,
+					architecto inventore aliquam? Quia est suscipit harum amet voluptates
+					distinctio mollitia accusamus quas expedita asperiores!Lorem ipsum
+					dolor sit amet <br />
+					consectetur adipisicing elit. Delectus quis recusandae aspernatur
+					molestias magni non, architecto inventore aliquam? Quia est suscipit
+					harum amet voluptates distinctio mollitia accusamus quas expedita
+					asperiores!
+					<br />
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quis
+					recusandae aspernatur molestias magni non, architecto inventore
+					aliquam? Quia est suscipit harum amet voluptates distinctio mollitia
+					accusamus quas expedita asperiores!Lorem ipsum dolor sit amet <br />
+					consectetur adipisicing elit. Delectus quis recusandae aspernatur
+					molestias magni non, architecto inventore aliquam? Quia est suscipit
+					harum amet voluptates distinctio mollitia accusamus quas expedita
+					asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Delectus quis recusandae aspernatur molestias magni non, architecto
+					inventore aliquam? Quia est suscipit harum amet voluptates distinctio
+					mollitia accusamus quas expedita asperiores!Lorem ipsum dolor sit amet{' '}
+					<br />
+					consectetur adipisicing elit. Delectus quis recusandae aspernatur
+					molestias magni non, architecto inventore aliquam? Quia est suscipit
+					harum amet voluptates distinctio mollitia accusamus quas expedita
+					asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Delectus quis recusandae aspernatur molestias magni non, architecto
+					inventore aliquam? Quia est suscipit harum amet voluptates distinctio
+					mollitia accusamus quas expedita asperiores!Lorem ipsum dolor sit amet{' '}
+					<br />
+					consectetur adipisicing elit. Delectus quis recusandae aspernatur
+					molestias magni non, architecto inventore aliquam? Quia est suscipit
+					harum amet voluptates distinctio mollitia accusamus quas expedita
+					asperiores!
+				</div>
+				<div id="life-section" ref={rightPanelLifeRef}>
+					<h2>Life</h2>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quis
+					recusandae aspernatur molestias magni non, architecto inventore
+					aliquam? Quia est suscipit harum amet voluptates distinctio mollitia
+					accusamus quas expedita asperiores!Lorem ipsum dolor sit amet <br />
+					consectetur adipisicing elit. Delectus quis recusandae aspernatur
+					molestias magni non, architecto inventore aliquam? Quia est suscipit
+					harum amet voluptates distinctio mollitia accusamus quas expedita
+					asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Delectus quis recusandae aspernatur molestias magni non, architecto
+					inventore aliquam? Quia est suscipit harum amet voluptates distinctio
+					mollitia accusamus quas expedita asperiores!Lorem ipsum dolor sit amet{' '}
+					<br />
+					consectetur adipisicing elit. Delectus quis recusandae aspernatur
+					molestias magni non, architecto inventore aliquam? Quia est suscipit
+					harum amet voluptates distinctio mollitia accusamus quas expedita
+					asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Delectus quis recusandae aspernatur molestias magni non, architecto
+					inventore aliquam? Quia est suscipit harum amet voluptates distinctio
+					mollitia accusamus quas expedita asperiores!Lorem ipsum dolor sit amet{' '}
+					<br />
+					consectetur adipisicing elit. Delectus quis recusandae aspernatur
+					molestias magni non, architecto inventore aliquam? Quia est suscipit
+					harum amet voluptates distinctio mollitia accusamus quas expedita
+					asperiores!
+					<br />
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quis
+					recusandae aspernatur molestias magni non, architecto inventore
+					aliquam? Quia est suscipit harum amet voluptates distinctio mollitia
+					accusamus quas expedita asperiores!Lorem ipsum dolor sit amet <br />
+					consectetur adipisicing elit. Delectus quis recusandae aspernatur
+					molestias magni non, architecto inventore aliquam? Quia est suscipit
+					harum amet voluptates distinctio mollitia accusamus quas expedita
+					asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Delectus quis recusandae aspernatur molestias magni non, architecto
+					inventore aliquam? Quia est suscipit harum amet voluptates distinctio
+					mollitia accusamus quas expedita asperiores!Lorem ipsum dolor sit amet{' '}
+					<br />
+					consectetur adipisicing elit. Delectus quis recusandae aspernatur
+					molestias magni non, architecto inventore aliquam? Quia est suscipit
+					harum amet voluptates distinctio mollitia accusamus quas expedita
+					asperiores!Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Delectus quis recusandae aspernatur molestias magni non, architecto
+					inventore aliquam? Quia est suscipit harum amet voluptates distinctio
+					mollitia accusamus quas expedita asperiores!Lorem ipsum dolor sit amet{' '}
+					<br />
+					consectetur adipisicing elit. Delectus quis recusandae aspernatur
+					molestias magni non, architecto inventore aliquam? Quia est suscipit
+					harum amet voluptates distinctio mollitia accusamus quas expedita
+					asperiores!
+				</div>
 			</div>
 		</main>
 	);
