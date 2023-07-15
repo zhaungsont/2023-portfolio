@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import BackgroundGraphics from '@/app/components/BackgroundGraphics';
 import HomeLeftPanel from '@/app/components/HomeLeftPanel';
+import WorkRightSection from '@/app/components/WorkRightSection';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -34,6 +35,8 @@ export default function Home() {
 		DisplayMode.NONE,
 	]);
 
+	const [scrollPos, setScrollPos] = useState(0);
+
 	const navButtonHoverHandler = (e: any) => {
 		const rect = e.target.getBoundingClientRect();
 		const x = e.clientX - rect.left;
@@ -41,6 +44,23 @@ export default function Home() {
 		document.documentElement.style.setProperty('--mouse-x', `${x}px`);
 		document.documentElement.style.setProperty('--mouse-y', `${y}px`);
 	};
+
+	function toggleSectionScroll(activeSection: any) {
+		for (let item in DisplayMode) {
+			if (isNaN(Number(item))) {
+				if (item === activeSection) {
+					setSectionStatus((prevStatus) => {
+						const newStatus = [...prevStatus];
+						newStatus[Sections.HOME] = DisplayMode.SHOWN;
+						newStatus[Sections.WORK] = DisplayMode.HIDDEN;
+						newStatus[Sections.LIFE] = DisplayMode.HIDDEN;
+						newStatus[Sections.CONTACT] = DisplayMode.HIDDEN;
+						return newStatus;
+					});
+				}
+			}
+		}
+	}
 
 	const handleSectionScroll = (e: Event) => {
 		const { top: landingTop, bottom: landingBottom } =
@@ -50,9 +70,9 @@ export default function Home() {
 		const { top: lifeTop, bottom: lifeBottom } =
 			rightPanelLifeRef?.current.getBoundingClientRect();
 		const scrollPos = window.innerHeight / 2;
+		setScrollPos(scrollPos);
 
 		if (landingBottom >= scrollPos) {
-			console.log('HOME');
 			setSectionStatus((prevStatus) => {
 				const newStatus = [...prevStatus];
 				newStatus[Sections.HOME] = DisplayMode.SHOWN;
@@ -62,7 +82,6 @@ export default function Home() {
 				return newStatus;
 			});
 		} else if (workBottom >= scrollPos) {
-			console.log('WORK');
 			setSectionStatus((prevStatus) => {
 				const newStatus = [...prevStatus];
 				newStatus[Sections.HOME] = DisplayMode.HIDDEN;
@@ -72,7 +91,6 @@ export default function Home() {
 				return newStatus;
 			});
 		} else if (lifeBottom >= scrollPos) {
-			console.log('LIFE');
 			setSectionStatus((prevStatus) => {
 				const newStatus = [...prevStatus];
 				newStatus[Sections.HOME] = DisplayMode.HIDDEN;
@@ -82,7 +100,6 @@ export default function Home() {
 				return newStatus;
 			});
 		} else {
-			console.log('CONTACT');
 			setSectionStatus((prevStatus) => {
 				const newStatus = [...prevStatus];
 				newStatus[Sections.HOME] = DisplayMode.HIDDEN;
@@ -101,9 +118,12 @@ export default function Home() {
 		};
 	}, []);
 
+	const onSwitchProject = () => {};
+
 	return (
 		<main id="landing-page">
 			<BackgroundGraphics />
+
 			<div id="main-left-section">
 				<div
 					id="home-left-panel"
@@ -201,31 +221,15 @@ export default function Home() {
 					</div>
 				</div>
 				<div id="work-right-section" ref={rightPanelWorkRef}>
-					<div className="project">
-						<div className="card">
-							<Image
-								src="https://images.unsplash.com/photo-1683130461728-cf2ab05765c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80"
-								alt=""
-								fill
-							/>
+					<WorkRightSection
+						scrollPos={scrollPos}
+						onSwitchProject={onSwitchProject}
+					/>
+					{/* <div className="project">
+						<div className="card horizontal">
+							<Image src="/images/hdre1.jpg" className="reveal" alt="" fill />
 						</div>
-						<div className="card">
-							<Image
-								src="https://images.unsplash.com/photo-1688242688672-c7e1a8fd1e49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
-								alt=""
-								fill
-							/>
-						</div>
-					</div>
-					<div className="project">
-						<div className="card">
-							<Image
-								src="https://images.unsplash.com/photo-1683130461728-cf2ab05765c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80"
-								alt=""
-								fill
-							/>
-						</div>
-						<div className="card">
+						<div className="card vertical">
 							<Image
 								src="https://images.unsplash.com/photo-1688242688672-c7e1a8fd1e49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
 								alt=""
@@ -233,6 +237,22 @@ export default function Home() {
 							/>
 						</div>
 					</div>
+					<div className="project">
+						<div className="card vertical">
+							<Image
+								src="https://images.unsplash.com/photo-1683130461728-cf2ab05765c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80"
+								alt=""
+								fill
+							/>
+						</div>
+						<div className="card vertical">
+							<Image
+								src="https://images.unsplash.com/photo-1688242688672-c7e1a8fd1e49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
+								alt=""
+								fill
+							/>
+						</div>
+					</div> */}
 				</div>
 				<div id="life-right-section" ref={rightPanelLifeRef}>
 					<h2>Life</h2>
