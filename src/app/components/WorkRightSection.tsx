@@ -3,18 +3,19 @@
 // import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import React, { useEffect, useState, useRef } from 'react';
+import { SubSections } from '@/app/models/enums';
 
 interface WorkRightSectionProps {
 	scrollPos: number;
-	onSwitchProject: () => void;
+	onSwitchSubSection: (subSections: SubSections) => void;
 }
 
 const WorkRightSection = (props: WorkRightSectionProps) => {
 	const scrollPos = props.scrollPos;
+	const onSwitchSubSection = props.onSwitchSubSection;
 	const projectHDRERef = useRef(null) as any;
 	const project2Ref = useRef(null) as any;
 	const project3Ref = useRef(null) as any;
-	console.log('scrollPos', scrollPos);
 
 	const hdreRect = projectHDRERef?.current
 		? projectHDRERef?.current?.getBoundingClientRect()
@@ -23,6 +24,14 @@ const WorkRightSection = (props: WorkRightSectionProps) => {
 	const project2Rect = project2Ref?.current
 		? project2Ref?.current?.getBoundingClientRect()
 		: { top: 0, bottom: 0 };
+
+	if (hdreRect.top < scrollPos && scrollPos < hdreRect.bottom) {
+		onSwitchSubSection(SubSections.HDRE);
+	} else if (project2Rect.top < scrollPos && scrollPos < project2Rect.bottom) {
+		onSwitchSubSection(SubSections.PROJECT_2);
+	} else {
+		onSwitchSubSection(SubSections.NONE);
+	}
 
 	return (
 		<>

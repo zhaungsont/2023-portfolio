@@ -3,9 +3,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import BackgroundGraphics from '@/app/components/BackgroundGraphics';
 import HomeLeftPanel from '@/app/components/HomeLeftPanel';
+import WorkLeftSection from '@/app/components/WorkLeftSection';
 import WorkRightSection from '@/app/components/WorkRightSection';
 import Link from 'next/link';
 import Image from 'next/image';
+import { SubSections } from '@/app/models/enums';
 
 import { Roboto_Mono } from 'next/font/google';
 const robotoMono = Roboto_Mono({ subsets: ['latin'] });
@@ -36,7 +38,7 @@ export default function Home() {
 	]);
 
 	const [scrollPos, setScrollPos] = useState(0);
-
+	const [subSection, setSubSection] = useState(SubSections.NONE);
 	const navButtonHoverHandler = (e: any) => {
 		const rect = e.target.getBoundingClientRect();
 		const x = e.clientX - rect.left;
@@ -44,23 +46,6 @@ export default function Home() {
 		document.documentElement.style.setProperty('--mouse-x', `${x}px`);
 		document.documentElement.style.setProperty('--mouse-y', `${y}px`);
 	};
-
-	function toggleSectionScroll(activeSection: any) {
-		for (let item in DisplayMode) {
-			if (isNaN(Number(item))) {
-				if (item === activeSection) {
-					setSectionStatus((prevStatus) => {
-						const newStatus = [...prevStatus];
-						newStatus[Sections.HOME] = DisplayMode.SHOWN;
-						newStatus[Sections.WORK] = DisplayMode.HIDDEN;
-						newStatus[Sections.LIFE] = DisplayMode.HIDDEN;
-						newStatus[Sections.CONTACT] = DisplayMode.HIDDEN;
-						return newStatus;
-					});
-				}
-			}
-		}
-	}
 
 	const handleSectionScroll = (e: Event) => {
 		const { top: landingTop, bottom: landingBottom } =
@@ -118,7 +103,9 @@ export default function Home() {
 		};
 	}, []);
 
-	const onSwitchProject = () => {};
+	const onSwitchSubSection = (subSection: SubSections) => {
+		setSubSection(subSection);
+	};
 
 	return (
 		<main id="landing-page">
@@ -147,7 +134,8 @@ export default function Home() {
 							: false
 					}`}
 				>
-					<div className="work-static-part">
+					<WorkLeftSection subSection={subSection} />
+					{/* <div className="work-static-part">
 						<div className="work-static-title">
 							<strong>Michael Chuang</strong> is a web developer based in
 							Taipei, Taiwan.
@@ -177,7 +165,7 @@ export default function Home() {
 							volutpat dictum ultricies. Aenean nec volutpat erat.
 						</div>
 						<div className="work-dynamic-read-more">Read More_</div>
-					</div>
+					</div> */}
 				</div>
 				<div
 					id="life-left-panel"
@@ -223,7 +211,7 @@ export default function Home() {
 				<div id="work-right-section" ref={rightPanelWorkRef}>
 					<WorkRightSection
 						scrollPos={scrollPos}
-						onSwitchProject={onSwitchProject}
+						onSwitchSubSection={onSwitchSubSection}
 					/>
 					{/* <div className="project">
 						<div className="card horizontal">
