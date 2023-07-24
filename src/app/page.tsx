@@ -194,12 +194,14 @@ export default function Home() {
 								<div className="nav-button-text">Work</div>
 							</div>
 						</Link>
-						<div
-							className="nav-button"
-							onMouseMove={(e: any) => navButtonHoverHandler(e)}
-						>
-							<div className="nav-button-text">Life</div>
-						</div>
+						<Link href="#life-right-section">
+							<div
+								className="nav-button"
+								onMouseMove={(e: any) => navButtonHoverHandler(e)}
+							>
+								<div className="nav-button-text">Life</div>
+							</div>
+						</Link>
 						<div
 							className="nav-button"
 							onMouseMove={(e: any) => navButtonHoverHandler(e)}
@@ -213,34 +215,6 @@ export default function Home() {
 						scrollPos={scrollPos}
 						onSwitchSubSection={onSwitchSubSection}
 					/>
-					{/* <div className="project">
-						<div className="card horizontal">
-							<Image src="/images/hdre1.jpg" className="reveal" alt="" fill />
-						</div>
-						<div className="card vertical">
-							<Image
-								src="https://images.unsplash.com/photo-1688242688672-c7e1a8fd1e49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
-								alt=""
-								fill
-							/>
-						</div>
-					</div>
-					<div className="project">
-						<div className="card vertical">
-							<Image
-								src="https://images.unsplash.com/photo-1683130461728-cf2ab05765c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80"
-								alt=""
-								fill
-							/>
-						</div>
-						<div className="card vertical">
-							<Image
-								src="https://images.unsplash.com/photo-1688242688672-c7e1a8fd1e49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
-								alt=""
-								fill
-							/>
-						</div>
-					</div> */}
 				</div>
 				<div id="life-right-section" ref={rightPanelLifeRef}>
 					<h2>Life</h2>
@@ -293,6 +267,38 @@ export default function Home() {
 					molestias magni non, architecto inventore aliquam? Quia est suscipit
 					harum amet voluptates distinctio mollitia accusamus quas expedita
 					asperiores!
+				</div>
+				<div id="contact-right-section">
+					<h2>Contact</h2>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque nihil
+					id quis. Deleniti numquam assumenda veniam quae temporibus facere
+					nulla veritatis modi unde, ad vel nisi consequuntur, ducimus animi
+					consectetur? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Itaque nihil id quis. Deleniti numquam assumenda veniam quae
+					temporibus facere nulla veritatis modi unde, ad vel nisi consequuntur,
+					ducimus animi consectetur? Lorem ipsum dolor sit amet consectetur
+					adipisicing elit. Itaque nihil id quis. Deleniti numquam assumenda
+					veniam quae temporibus facere nulla veritatis modi unde, ad vel nisi
+					consequuntur, ducimus animi consectetur? Lorem ipsum dolor sit amet
+					consectetur adipisicing elit. Itaque nihil id quis. Deleniti numquam
+					assumenda veniam quae temporibus facere nulla veritatis modi unde, ad
+					vel nisi consequuntur, ducimus animi consectetur? Lorem ipsum dolor
+					sit amet consectetur adipisicing elit. Itaque nihil id quis. Deleniti
+					numquam assumenda veniam quae temporibus facere nulla veritatis modi
+					unde, ad vel nisi consequuntur, ducimus animi consectetur? Lorem ipsum
+					dolor sit amet consectetur adipisicing elit. Itaque nihil id quis.
+					Deleniti numquam assumenda veniam quae temporibus facere nulla
+					veritatis modi unde, ad vel nisi consequuntur, ducimus animi
+					consectetur? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Itaque nihil id quis. Deleniti numquam assumenda veniam quae
+					temporibus facere nulla veritatis modi unde, ad vel nisi consequuntur,
+					ducimus animi consectetur? Lorem ipsum dolor sit amet consectetur
+					adipisicing elit. Itaque nihil id quis. Deleniti numquam assumenda
+					veniam quae temporibus facere nulla veritatis modi unde, ad vel nisi
+					consequuntur, ducimus animi consectetur? Lorem ipsum dolor sit amet
+					consectetur adipisicing elit. Itaque nihil id quis. Deleniti numquam
+					assumenda veniam quae temporibus facere nulla veritatis modi unde, ad
+					vel nisi consequuntur, ducimus animi consectetur?
 				</div>
 			</div>
 		</main>

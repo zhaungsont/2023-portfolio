@@ -48,6 +48,18 @@ const WorkRightSection = (props: WorkRightSectionProps) => {
 						fill
 					/>
 				</div>
+				<div className="card horizontal">
+					<Image
+						src="/images/hdre2.png"
+						className={
+							hdreRect.top < scrollPos && scrollPos < hdreRect.bottom
+								? 'reveal'
+								: ''
+						}
+						alt=""
+						fill
+					/>
+				</div>
 				<div className="card vertical">
 					<Image
 						src="https://images.unsplash.com/photo-1688242688672-c7e1a8fd1e49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
